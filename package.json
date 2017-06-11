@@ -1,0 +1,26 @@
+{
+  "name": "bghapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "yarn dev:start",
+    "dev:start": "nodemon --ignore lib --exec babel-node src/server",
+    "prod:build": "rimraf lib && babel src -d lib --ignore .test.js",
+    "prod:start": "cross-env NODE_ENV=production pm2 start lib/server.js && pm2 logs",
+    "prod:stop": "pm2 delete server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
+    "cross-env": "^5.0.1",
+    "pm2": "^2.5.0",
+    "rimraf": "^2.6.1"
+  }
+}
